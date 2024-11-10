@@ -1,0 +1,440 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    line-height: 1.6;
+    
+}
+
+
+/* Header */
+header {
+    background-color: #ffffff;
+    box-shadow: 0 4px 2px -2px gray;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.logo h1 {
+    color: #162D69;
+    padding-left: 50px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding-right: 50px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #162D69;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    background-color: #007BFF;
+    color: white; /* Change text color to match your theme */
+    padding: 8px 18px; /* Adjust padding for visual alignment */
+    border-radius: 5px; /* Optional: Rounded corners */
+}
+
+#loginBtn{
+    border: 1px solid #00d9ff;
+    padding:5px 20px;
+    border-radius: 15px;
+    background-color: #00d9ff;
+    color: white;
+}
+#loginBtn:hover{
+    background-color: darkblue;
+    border: 1px solid darkblue;
+    padding:5px 20px;
+    border-radius: 15px;
+}
+
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+}
+
+.modal-content button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+    font-size: 1rem;
+}
+
+.modal-content button:hover {
+    background-color: #0056b3;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@keyframes zoomIn {
+    0% {
+        background-size: 100%;
+    }
+    100% {
+        background-size: 120%;
+    }
+}
+/* Hero Section */
+
+/* Add this to your CSS file */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-paragraph {
+    opacity: 0; /* Start with the paragraph hidden */
+    animation: fadeInUp 3s ease-in-out forwards;
+}
+
+
+.hero {
+    position: relative;
+    background: url('mainbackground.jpg') no-repeat center center/cover;
+    height: 100vh;
+    color: white;
+    text-align: left;
+    display: flex;
+    animation: zoomIn 5s infinite alternate;
+    align-items: center;
+    background-attachment: fixed;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(22, 28, 74, 0.5);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 500px;
+    margin-left: 50px;
+}
+
+.hero-content h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    margin-left: 100px;
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    margin-left: 100px;
+}
+
+.btn-signup {
+    margin-left: 100px;
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    text-decoration: none;
+    font-size: 1.5rem;
+    border-radius: 5px;
+}
+
+.btn-signup:hover {
+    background-color: #0056b3;
+}
+
+/* About Section */
+.about {
+    padding: 50px 20px;
+    background-color:white;
+}
+
+.about .container {
+    display: flex;
+    align-items: center;
+}
+
+.about .container .about-content{
+    display: flex;
+}
+
+.about-text h2{
+    margin-top: 100px;
+    margin-left: 100px;
+    color: orangered;
+    font-size: 2.5rem;
+}
+
+.about-text p{
+    margin-left: 100px;
+    margin-top: 20px;
+    font-size: 1.5rem;
+}
+.about-text {
+    flex: 0.8;
+}
+
+.about-image {
+    flex: 1;
+    text-align: center;
+}
+#border{
+    border: 1px solid orange;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+@keyframes slideBackground {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+.pro-section {
+    position: relative;
+    background-image: url('back.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    height: 500px; /* Adjust as needed */
+    display: flex;
+    animation: slideBackground 5s linear infinite;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Ensures overlay fills the section */
+    background-attachment: fixed;
+}
+
+.pro-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(48, 58, 82, 0.774); /* Black overlay with 50% opacity */
+    z-index: 1;
+}
+
+.pro-content {
+    margin-top: 10%;
+    margin-left: 25%;
+    position: relative;
+    z-index: 2; /* Ensures content is above the overlay */
+    background-color: rgba(255, 255, 255, 0.6); /* White background with 80% opacity */
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    width: 50%; /* Adjust the width as needed */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.pro-content h1 {
+    margin-bottom: 20px;
+    font-size: 30px;
+    color: orangered;
+}
+
+.pro-content p {
+    margin-bottom: 30px;
+    font-size: 20px;
+    color: #555;
+}
+
+.contact-button {
+    background-color: blue;
+    border: 2px solid blue;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.contact-button:hover {
+    border: 2px solid darkblue;
+    background-color: darkblue;
+    color: #fff;
+}
+
+
+/* Key Features Section */
+.features {
+    padding: 50px 20px;
+    background-color: #cfe9ee;
+}
+
+
+
+.features-grid {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.feature-item {
+    flex: 1;
+    padding: 20px;
+}
+
+.feature-item i {
+    font-size: 3rem;
+    color: #007BFF;
+    margin-bottom: 10px;
+}
+
+.feature-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+/* Footer */
+footer {
+    background-color: #162D69;
+    color: white;
+    padding: 20px 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-left {
+    flex: 1;
+    display: flex;
+}
+
+.footer-left h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    padding-left: 100px;
+}
+
+.footer-links {
+    list-style: none;
+}
+.footer-left p{
+    margin-left: 100px;
+    max-width: 30%;
+}
+
+.footer-left p b{
+    font-size: 1.5rem;
+}
+
+.footer-links{
+    padding-left: 220px;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+
+}
+
+.footer-links h3{
+    color: rgb(18, 210, 244);
+}
+
+.footer-links li a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-links li a:hover {
+    text-decoration: underline;
+}
+
+.footer-right {
+    /* flex: 1; */
+    padding-right: 100px;
+}
+
+.social-media h3{
+    color:  rgb(18, 210, 244);
+}
+.social-media a {
+    color: white;
+    margin: 0 10px;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.social-media a:hover {
+    color: #007BFF;
+}

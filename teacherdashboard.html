@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Gradient background for body */
+        body {
+            background: linear-gradient(135deg, #f0f4fa, #a9c9ff);
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: #333;
+            position: relative;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        /* Pattern overlay on the background */
+        body::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://www.transparenttextures.com/patterns/diagonal-stripes.png');
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        /* Header styling */
+        header {
+            background-color: #2d3e50;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #3498db;
+        }
+
+        header .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #3498db;
+            letter-spacing: 1px;
+        }
+
+        header .nav-links a {
+            color: white;
+            margin-left: 20px;
+            font-weight: 500;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        header .nav-links a:hover {
+            color: #f39c12;
+        }
+
+        /* Subject card style with animation */
+        .subject-box {
+            width: 100%;
+            height: 180px;
+            background-color: #fff;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            font-size: 22px;
+            font-weight: bold;
+            color: #2d3e50;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        /* Hover effect for subject boxes */
+        .subject-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+            background-color: #3498db;
+            color: white;
+        }
+
+        /* Additional hover effect */
+        .subject-box::before {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -200px;
+            left: -150px;
+            transition: all 0.7s ease;
+        }
+
+        .subject-box:hover::before {
+            top: -50px;
+            left: -50px;
+        }
+
+        /* Grid layout for subjects */
+        .subject-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 20px;
+            padding: 40px;
+        }
+
+        /* Title styling */
+        .container h2 {
+            font-size: 36px;
+            font-weight: bold;
+            color: #2d3e50;
+            margin-bottom: 30px;
+        }
+
+        .container h4 {
+            font-size: 24px;
+            font-weight: 500;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+
+        /* Updated footer */
+        footer {
+            background-color: #2d3e50;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            border-top: 3px solid #3498db;
+            margin-top: 50px;
+        }
+
+        footer p {
+            margin: 0;
+            color: #ecf0f1;
+        }
+
+        /* Footer links */
+        footer .footer-links {
+            margin-bottom: 20px;
+        }
+
+        footer .footer-links a {
+            color: #ecf0f1;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+
+        footer .footer-links a:hover {
+            color: #f39c12;
+        }
+
+        /* Social icons */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.1);
+            color: #f39c12;
+        }
+
+        /* Smooth animation for header and footer */
+        header,
+        footer {
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header with logo and navigation links -->
+    <header>
+        <div class="logo">Quizhub</div>
+        <div class="nav-links">
+            <a href="profiles.php">Profile</a>
+            <a href="logout.php">Logout</a>
+        </div>
+    </header>
+
+    <!-- Main content with subject selection -->
+    <div class="container text-center mt-5">
+        <h2>Teacher Dashboard</h2>
+        <h4>Select Subject</h4>
+
+        <!-- Subject grid with vibrant colors and animations -->
+        <div class="subject-grid">
+            <a href="questions.php?subject=Operating Systems&quiz_id=1">
+                <div class="subject-box">Operating Systems</div>
+            </a>
+            <a href="questions.php?subject=Database Operating System&quiz_id=2">
+                <div class="subject-box">Database Operating System</div>
+            </a>
+            <a href="questions.php?subject=Scripting Languages&quiz_id=3">
+                <div class="subject-box">Scripting Languages</div>
+            </a>
+            <a href="questions.php?subject=Numerical Methods&quiz_id=4">
+                <div class="subject-box">Numerical Methods</div>
+            </a>
+            <a href="questions.php?subject=Software Engineering&quiz_id=5">
+                <div class="subject-box">Software Engineering</div>
+            </a>
+            
+            
+            
+            
+            
+        </div>
+    </div>
+
+    <!-- Updated footer with links and social icons -->
+    <footer>
+        <div class="footer-links">
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Privacy Policy</a>
+        </div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <p>&copy; 2024 Quizhub. All rights reserved.</p>
+    </footer>
+
+    <!-- FontAwesome for social icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <!-- jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

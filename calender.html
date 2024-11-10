@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful Calendar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f4f8;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #4a90e2;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeInUp 0.5s forwards;
+            animation-delay: 0.3s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .calendar-container {
+            background: white;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            width: 350px;
+        }
+
+        .calendar-header {
+            background: #4a90e2;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            transition: background-color 0.3s;
+        }
+
+        .calendar-header:hover {
+            background-color: #3e7cb1;
+        }
+
+        .calendar-header i {
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .calendar-header i:hover {
+            transform: scale(1.1);
+        }
+
+        .month-year {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .calendar-body {
+            padding: 20px;
+        }
+
+        .calendar-weekdays, .calendar-dates {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            text-align: center;
+        }
+
+        .calendar-weekdays div {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .calendar-dates div {
+            font-size: 1rem;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .calendar-dates div:hover {
+            background-color: #dfe4ea;
+            transform: scale(1.1);
+        }
+
+        .calendar-dates .current-date {
+            background-color: #4a90e2;
+            color: white;
+        }
+
+        .calendar-dates .inactive {
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1> Calendar</h1>
+    <div class="calendar-container">
+        <div class="calendar-header">
+            <i class="fas fa-chevron-left" id="prev"></i>
+            <div class="month-year" id="month-year">September 2024</div>
+            <i class="fas fa-chevron-right" id="next"></i>
+        </div>
+        <div class="calendar-body">
+            <div class="calendar-weekdays">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+            </div>
+            <div class="calendar-dates" id="calendar-dates">
+                <!-- Dates will be populated dynamically using JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const calendarDates = document.getElementById("calendar-dates");
+        const monthYear = document.getElementById("month-year");
+        const prevButton = document.getElementById("prev");
+        const nextButton = document.getElementById("next");
+
+        const months = [
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+
+        let currentDate = new Date();
+        let currentMonth = currentDate.getMonth();
+        let currentYear = currentDate.getFullYear();
+
+        function renderCalendar(month, year) {
+            // Clear the previous dates
+            calendarDates.innerHTML = "";
+
+            // Get first day of the month and total days in the current month
+            const firstDay = new Date(year, month, 1).getDay();
+            const totalDays = new Date(year, month + 1, 0).getDate();
+            const prevMonthDays = new Date(year, month, 0).getDate();
+
+            // Display month and year
+            monthYear.textContent = `${months[month]} ${year}`;
+
+            // Add previous month's dates (inactive)
+            for (let i = firstDay; i > 0; i--) {
+                const div = document.createElement("div");
+                div.classList.add("inactive");
+                div.textContent = prevMonthDays - i + 1;
+                calendarDates.appendChild(div);
+            }
+
+            // Add current month's dates
+            for (let day = 1; day <= totalDays; day++) {
+                const div = document.createElement("div");
+                if (day === currentDate.getDate() && year === currentDate.getFullYear() && month === currentDate.getMonth()) {
+                    div.classList.add("current-date");
+                }
+                div.textContent = day;
+                calendarDates.appendChild(div);
+            }
+
+            // Add next month's dates (inactive)
+            const totalSlots = calendarDates.querySelectorAll("div").length;
+            for (let i = 1; i <= (42 - totalSlots); i++) {
+                const div = document.createElement("div");
+                div.classList.add("inactive");
+                div.textContent = i;
+                calendarDates.appendChild(div);
+            }
+        }
+
+        // Add event listeners for previous and next buttons
+        prevButton.addEventListener("click", () => {
+            currentMonth--;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            }
+            renderCalendar(currentMonth, currentYear);
+        });
+
+        nextButton.addEventListener("click", () => {
+            currentMonth++;
+            if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            renderCalendar(currentMonth, currentYear);
+        });
+
+        // Render the calendar on page load
+        renderCalendar(currentMonth, currentYear);
+    </script>
+</body>
+</html>

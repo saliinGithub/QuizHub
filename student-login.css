@@ -1,0 +1,155 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: white;
+    overflow: hidden;
+    position: relative;
+    color:black;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.bubbles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.bubble {
+    position: absolute;
+    bottom: -150px;
+    width: 60px;
+    height: 60px;
+    background: rgba(213, 108, 108, 0.6);
+    border-radius: 50%;
+    animation: bubbleAnimation 10s infinite;
+}
+
+.bubble:nth-child(1) {
+    left: 10%;
+    animation-duration: 8s;
+}
+
+.bubble:nth-child(2) {
+    left: 30%;
+    animation-duration: 12s;
+}
+
+.bubble:nth-child(3) {
+    left: 50%;
+    animation-duration: 10s;
+}
+
+.bubble:nth-child(4) {
+    left: 70%;
+    animation-duration: 14s;
+}
+
+.bubble:nth-child(5) {
+    left: 90%;
+    animation-duration: 16s;
+}
+
+@keyframes bubbleAnimation {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateY(-500px) scale(1.5);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.6;
+    }
+}
+
+.login-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.login-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 90%;
+    max-width: 900px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    margin: auto;
+}
+
+.form-container {
+    width: 50%;
+    padding: 20px;
+}
+
+.image-container {
+    width: 50%;
+    padding: 20px;
+}
+
+.image-container img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.login-box h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.forgot-password {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    border-radius: 25px;
+    padding: 10px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+.text-center p {
+    margin-top: 20px;
+}
